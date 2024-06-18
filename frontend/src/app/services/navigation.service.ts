@@ -11,6 +11,7 @@ const networkModules = {
       { name: 'testnet', path: '/testnet' },
       { name: 'testnet4', path: '/testnet4' },
       { name: 'signet', path: '/signet' },
+      { name: 'regtest', path: '/regtest' },
     ],
   },
   liquid: {
@@ -69,7 +70,7 @@ export class NavigationService {
       }
       if (route.url?.length) {
         path = [path, ...route.url.map(segment => segment.path).filter(path => {
-          return path.length && !['testnet', 'testnet4', 'signet'].includes(path);
+          return path.length && !['testnet', 'testnet4', 'signet', 'regtest'].includes(path);
         })].join('/');
       }
       route = route.firstChild;

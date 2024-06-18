@@ -135,6 +135,39 @@ let routes: Routes = [
     ]
   },
   {
+    path: 'regtest',
+    children: [
+      {
+        path: 'mining/blocks',
+        redirectTo: 'blocks',
+        pathMatch: 'full'
+      },
+      {
+        path: '',
+        pathMatch: 'full',
+        loadChildren: () => import('./graphs/graphs.module').then(m => m.GraphsModule)
+      },
+      {
+        path: '',
+        loadChildren: () => import('./master-page.module').then(m => m.MasterPageModule),
+        data: { preload: true },
+      },
+      {
+        path: 'status',
+        data: { networks: ['bitcoin', 'liquid'] },
+        component: StatusViewComponent
+      },
+      {
+        path: '',
+        loadChildren: () => import('./graphs/graphs.module').then(m => m.GraphsModule)
+      },
+      {
+        path: '**',
+        redirectTo: '/signet'
+      },
+    ]
+  },
+  {
     path: '',
     pathMatch: 'full',
     loadChildren: () => import('./bitcoin-graphs.module').then(m => m.BitcoinGraphsModule),

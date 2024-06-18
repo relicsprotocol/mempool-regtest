@@ -177,6 +177,10 @@ main {
   background-color: var(--signet) !important;
 }
 
+.navbar-nav.regtest > .active {
+  background-color: #a5a5a5 !important;
+}
+
 .navbar-nav.liquidtestnet > .active {
   background-color: var(--liquidtestnet) !important;
 }
